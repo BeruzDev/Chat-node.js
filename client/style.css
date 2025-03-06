@@ -24,7 +24,9 @@ body {
     sans-serif;
   display: grid;
   place-content: center;
-  height: 100vh;
+  align-items: center;
+  height: 100dvh;
+  width: 100dvw;
   padding: 36px;
   grid-template-rows: 1fr;
   background-color: #1f2020;
@@ -34,8 +36,10 @@ body {
   border: 1px solid #ccc;
   border-radius: 12px;
   overflow: hidden;
-  width: 350px;
-  height: 100%;
+  width: 80dvw;
+  max-width: 350px;
+  height: 80dvh;
+  max-height: 550px;
   position: relative;
 }
 
@@ -44,28 +48,32 @@ body {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  padding: 0;
+  padding: 0 0 0 8px;
   margin: 8px;
   overflow-y: scroll;
-  height: 100%;
+  height: calc(100% - 52px);
   scroll-behavior: smooth;
-  padding-bottom: 48px;
   scrollbar-width: thin;
-  scrollbar-color: #888 #2e2e2e;
+  scrollbar-color: #88888800 #2e2e2e00;
 }
 
 
 #messages > li {
-  display: inline-block;
-  padding: 8px;
+  padding: 4px;
   border-radius: 4px;
-  background-color: #3c3c3c;
-  color: #fff;
-  margin-bottom: 4px;
+  margin: 4px 0;
 }
 
-#messages > li:nth-child(odd) {
-  background: #282828;
+#messages > li.current-user {
+  align-self: flex-end;
+  background-color: #3c3c3c;
+  color: #fff;
+}
+
+#messages > li.other-user {
+  align-self: flex-start;
+  background-color: #282828;
+  color: #fff;
 }
 
 #messages > li > p {
@@ -81,16 +89,16 @@ body {
   display: flex;
   height: 48px;
   left: 0;
-  padding: 4px;
+  padding: 8px;
   position: absolute;
   right: 0;
+  column-gap: 4px;
 }
 
 #input {
   border-radius: 4px;
   border: 1px solid #3c3c3c;
   flex: 1;
-  margin: 4px;
   padding: 0 8px;
   background-color: #3c3c3c;
   color: #fff;
@@ -105,11 +113,42 @@ body {
   background-color: #3c3c3c;
   color: #fff;
   border: 0;
-  margin: 4px;
+  margin: 0 0 0 4px;
   border-radius: 4px;
 }
 
 #form > button:hover {
   background-color: #6c6c6b;
   cursor: pointer;
+}
+
+@media (max-width: 600px) {
+  body {
+    padding: 16px;
+  }
+
+  #chat {
+    width: 100%;
+    max-width: none;
+    height: 100vh;
+  }
+
+  #messages {
+    padding: 0 8px;
+    margin: 8px 0;
+    height: calc(100% - 60px);
+  }
+
+  #form {
+    padding: 8px;
+    height: 48px;
+  }
+
+  #input {
+    padding: 0 8px;
+  }
+
+  #form > button {
+    margin: 0 0 0 4px;
+  }
 }

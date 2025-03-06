@@ -53,7 +53,7 @@ await createMessageTable()
 // +------------ Minuto (0 - 59)
 
 // Borrar chat cada 15 minutos
-cron.schedule('*/15 * * * *', async () => {
+cron.schedule('*/5 * * * *', async () => {
   console.log('Borrando y recreando la tabla de mensajes...')
   await db_connection.execute(`DROP TABLE IF EXISTS message`)
   await createMessageTable()

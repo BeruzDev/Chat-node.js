@@ -25,10 +25,11 @@ const form = document.getElementById('form')
 const input = document.getElementById('input')
 const messages = document.getElementById('messages')
 
-socket.on('chat message', (msg, serverOffset, username) => {
+socket.on('chat message', (msg, serverOffset, msgUsername) => {
+  const isCurrentUser = socket.auth.username === msgUsername
   const item = `
-  <li>
-    <small>${username}</small>
+  <li class="${isCurrentUser ? 'current-user' : 'other-user'}">
+    <small>${msgUsername}</small>
     <p>${msg}</p>
   </li>`
   messages.insertAdjacentHTML('beforeend', item)
