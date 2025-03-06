@@ -26,9 +26,9 @@ const db_connection = createClient({
 // const db_table_content = await db_connection.execute('SELECT * FROM message')
 // console.log(db_table_content)
 
-// await db_connection.execute(`
-//   DROP TABLE IF EXISTS message
-//   `)
+await db_connection.execute(`
+  DROP TABLE IF EXISTS message
+  `)
 
 await db_connection.execute(`
   CREATE TABLE IF NOT EXISTS message (
