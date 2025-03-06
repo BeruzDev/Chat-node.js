@@ -122,33 +122,3 @@ body {
   cursor: pointer;
 }
 
-@media (max-width: 600px) {
-  body {
-    padding: 16px;
-  }
-
-  #chat {
-    width: 100%;
-    max-width: none;
-    height: 100vh;
-  }
-
-  #messages {
-    padding: 0 8px;
-    margin: 8px 0;
-    height: calc(100% - 60px);
-  }
-
-  #form {
-    padding: 8px;
-    height: 48px;
-  }
-
-  #input {
-    padding: 0 8px;
-  }
-
-  #form > button {
-    margin: 0 0 0 4px;
-  }
-}
