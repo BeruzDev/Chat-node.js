@@ -1,6 +1,7 @@
 import express from 'express'
 import logger from 'morgan'
 import dotenv from 'dotenv'
+import cron from 'node-cron'
 import { Server } from 'socket.io'
 import { createServer } from 'node:http'
 import { createClient } from '@libsql/client'
@@ -26,17 +27,39 @@ const db_connection = createClient({
 // const db_table_content = await db_connection.execute('SELECT * FROM message')
 // console.log(db_table_content)
 
-await db_connection.execute(`
-  DROP TABLE IF EXISTS message
-  `)
+// await db_connection.execute(`
+//   DROP TABLE IF EXISTS message
+//   `)
 
-await db_connection.execute(`
-  CREATE TABLE IF NOT EXISTS message (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    content TEXT,
-    user TEXT
-  )
-`)
+const createMessageTable = async () => {
+  await db_connection.execute(`
+    CREATE TABLE IF NOT EXISTS message (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      content TEXT,
+      user TEXT
+    )
+  `)
+}
+
+await createMessageTable()
+
+// Sintaxis cron
+// * * * * *
+// | | | | |
+// | | | | +---- Día de la semana (0 - 7) (Domingo es 0 o 7)
+// | | | +------ Mes (1 - 12)
+// | | +-------- Día del mes (1 - 31)
+// | +---------- Hora (0 - 23)
+// +------------ Minuto (0 - 59)
+
+// Borrar chat cada 15 minutos
+cron.schedule('*/15 * * * *', async () => {
+  console.log('Borrando y recreando la tabla de mensajes...')
+  await db_connection.execute(`DROP TABLE IF EXISTS message`)
+  await createMessageTable()
+  io.emit('refresh')
+  console.log('Chat reseteado.')
+})
 
 io.on('connection', async (socket) => {
   console.log('a user has connected!')
