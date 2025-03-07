@@ -1,8 +1,13 @@
 # Beruz-Chat
 
-Beruz-Chat es una aplicación de chat en tiempo real construida con Node.js, Express, Socket.IO y una base de datos SQL. 
+**Beruz-Chat** es una aplicación de chat en tiempo real construida con Node.js, Express, Socket.IO y una base de datos SQL. 
 
-Cada vez que se abre una ventana con la dirección `https://chat-node-js-2u1m.onrender.com/`, representa un usuario distinto. Al abrir distintas ventanas, se puede ver la comunicación entre diferentes usuarios en tiempo real. El chat se borra automáticamente cada 15 minutos utilizando node-cron.
+- 📌 Chatea en vivo con otros usuarios en un entorno dinámico.
+- ⏳ Los mensajes se eliminan automáticamente cada 15 minutos para mantener la conversación fresca.
+- 🔄 Puedes abrir varias pestañas y comprobar cómo los mensajes se sincronizan instantáneamente entre ellas.
+- 👤 Cada usuario recibe un nombre aleatorio si no tiene uno asignado.
+
+**¡Abre múltiples pestañas y pruébalo en acción! 🚀**
 
 Este proyecto ha sido extraído del curso de Node.js de Midudev.
 
@@ -20,6 +25,4 @@ Este proyecto ha sido extraído del curso de Node.js de Midudev.
 
 La aplicación está desplegada en Render. Puedes acceder a ella en la siguiente URL: [https://chat-node-js-2u1m.onrender.com/](https://chat-node-js-2u1m.onrender.com/).
 
-## Licencia
 
-Este proyecto está licenciado bajo la Licencia ISC.
