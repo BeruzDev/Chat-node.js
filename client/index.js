@@ -2,14 +2,14 @@ import { io } from 'https://cdn.socket.io/4.3.2/socket.io.esm.min.js'
 
 const getUserName = async () => {
   const username = sessionStorage.getItem('username')
-  //TODO -> validar con el servidor
   if (username) {
     return username
   }
 
-  // Llamada a API para crear usuarios random ⬇
-  const res = await fetch('https://random-data-api.com/api/users/random_user')
-  const { username: randomUsername } = await res.json()
+  // Llamada a API para crear usuarios random usando randomuser.me
+  const res = await fetch('https://randomuser.me/api/')
+  const data = await res.json()
+  const randomUsername = data.results[0].login.username
   sessionStorage.setItem('username', randomUsername)
   return randomUsername
 }
