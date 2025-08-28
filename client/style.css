@@ -23,6 +23,7 @@ body {
     'Helvetica Neue',
     sans-serif;
   display: grid;
+  justify-items: center;
   place-content: center;
   align-items: center;
   height: 100dvh;
@@ -30,6 +31,27 @@ body {
   padding: 36px;
   grid-template-rows: 1fr;
   background-color: #1f2020;
+}
+
+#header{
+  position: fixed;
+  top: 0;
+  width: 100dvw;
+  padding: 0 2rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+
+  #title{
+    font-size: 21px;
+    font-weight: 500;
+    color: #919191;
+  }
+
+  #github-link{
+    color: #919191;
+  }
 }
 
 #chat {
@@ -122,3 +144,16 @@ body {
   cursor: pointer;
 }
 
+
+#footer{
+  position: fixed;
+  bottom: 0;
+  width: 100dvw;
+  padding: 0 0 2rem 2rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  color: #919191;
+  gap: 6px;
+}
